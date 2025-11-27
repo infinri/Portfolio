@@ -174,9 +174,12 @@ class BrevoContacts
             }
         }
 
-        // SMS (phone)
+        // SMS (phone) - format for Brevo E.164 format
         if (!empty($data['phone'])) {
-            $attributes['SMS'] = $data['phone'];
+            $formattedPhone = self::formatPhoneNumber($data['phone']);
+            if ($formattedPhone) {
+                $attributes['SMS'] = $formattedPhone;
+            }
         }
 
         // SERVICE_INTEREST
@@ -216,6 +219,51 @@ class BrevoContacts
         $attributes['LAST_CONTACT_DATE'] = date('Y-m-d H:i:s');
 
         return $attributes;
+    }
+
+    /**
+     * Format phone number to E.164 format for Brevo
+     * Assumes US numbers if no country code provided
+     *
+     * @param string $phone Raw phone number
+     * @return string|null Formatted phone or null if invalid
+     */
+    private static function formatPhoneNumber(string $phone): ?string
+    {
+        // Remove all non-digit characters except leading +
+        $cleaned = preg_replace('/[^\d+]/', '', $phone);
+        
+        // If it starts with +, assume it's already formatted
+        if (str_starts_with($cleaned, '+')) {
+            // Validate length (E.164 is 8-15 digits after +)
+            $digits = substr($cleaned, 1);
+            if (strlen($digits) >= 8 && strlen($digits) <= 15) {
+                return $cleaned;
+            }
+            return null;
+        }
+        
+        // Remove leading 1 if present (US country code without +)
+        if (str_starts_with($cleaned, '1') && strlen($cleaned) === 11) {
+            $cleaned = substr($cleaned, 1);
+        }
+        
+        // US number: should be 10 digits
+        if (strlen($cleaned) === 10) {
+            return '+1' . $cleaned;
+        }
+        
+        // If 11 digits starting with 1, it's US with country code
+        if (strlen($cleaned) === 11 && str_starts_with($cleaned, '1')) {
+            return '+' . $cleaned;
+        }
+        
+        // Can't determine format - skip SMS attribute rather than fail
+        Logger::warning('Could not format phone number for Brevo', [
+            'original' => $phone,
+            'cleaned' => $cleaned
+        ]);
+        return null;
     }
 
     /**
