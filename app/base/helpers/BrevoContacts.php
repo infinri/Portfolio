@@ -137,18 +137,20 @@ class BrevoContacts
                 'listIds' => [(int)$listId]
             ]);
 
-            // Update contact
-            $apiInstance->updateContact($contactData['email'], $contact);
+            // Update contact - SDK signature: updateContact($body, $identifier, $identifierType)
+            $email = $contactData['email'];
+            $apiInstance->updateContact($contact, $email);
 
             Logger::info('Brevo contact updated successfully', [
-                'email' => $contactData['email']
+                'email' => $email
             ]);
 
             return true;
 
         } catch (\Exception $e) {
             Logger::error('Brevo contact update failed', [
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
+                'email' => $contactData['email'] ?? 'unknown'
             ]);
 
             return false;
