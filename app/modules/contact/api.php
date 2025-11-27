@@ -113,8 +113,14 @@ try {
             'customer_email' => $data['email']
         ]);
         
-        // Add contact to Brevo database
-        BrevoContacts::addContact($data);
+        // Add contact to Brevo database - check return value!
+        $success = BrevoContacts::addContact($data);
+        
+        if (!$success) {
+            Logger::error('Brevo contact creation returned false');
+            echo json_encode(['success' => false, 'message' => 'Failed to send message. Please try again.']);
+            exit;
+        }
         
         // Record this attempt for rate limiting
         RateLimiter::record($clientIp);

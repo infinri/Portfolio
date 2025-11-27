@@ -179,6 +179,10 @@ class BrevoContacts
         // SMS (phone) - format for Brevo E.164 format
         if (!empty($data['phone'])) {
             $formattedPhone = self::formatPhoneNumber($data['phone']);
+            Logger::info('Phone formatting', [
+                'original' => $data['phone'],
+                'formatted' => $formattedPhone
+            ]);
             if ($formattedPhone) {
                 $attributes['SMS'] = $formattedPhone;
             }
