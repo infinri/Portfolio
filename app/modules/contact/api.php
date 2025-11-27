@@ -100,32 +100,28 @@ try {
     Logger::info('Contact form validation passed');
     
     // 5. Get Validated & Sanitized Data
-    // Note: Sanitization (htmlspecialchars) happens in Mail::sendContactForm()
     $data = $validator->validated();
     
-    // 6. Send Email
+    // 6. Create contact in Brevo (triggers automation workflows)
     try {
-        Logger::info('Attempting to send contact form email', [
+        Logger::info('Creating Brevo contact', [
             'customer_name' => $data['name'],
-            'customer_email' => $data['email'],
-            'subject' => $data['subject']
+            'customer_email' => $data['email']
         ]);
-        
-        Mail::sendContactForm($data);
         
         // Add contact to Brevo database
         BrevoContacts::addContact($data);
         
-        // Record this attempt for rate limiting (only after successful send)
+        // Record this attempt for rate limiting
         RateLimiter::record($clientIp);
         
-        Logger::info('Contact form email sent successfully');
+        Logger::info('Brevo contact created successfully');
         
         echo json_encode(['success' => true, 'message' => 'Message sent successfully!']);
         exit;
         
     } catch (Exception $e) {
-        Logger::error('Contact form email failed', [
+        Logger::error('Brevo contact creation failed', [
             'error' => $e->getMessage(),
             'file' => $e->getFile(),
             'line' => $e->getLine()

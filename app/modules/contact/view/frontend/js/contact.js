@@ -146,15 +146,6 @@
                 errorMessage = 'Please enter a valid phone number';
             }
         }
-        // URL validation
-        else if (type === 'url' && value) {
-            try {
-                new URL(value);
-            } catch {
-                isValid = false;
-                errorMessage = 'Please enter a valid URL (e.g., https://example.com)';
-            }
-        }
 
         if (!isValid) {
             showFieldError(field, errorMessage);

@@ -146,11 +146,11 @@ use App\Base\Helpers\ReCaptcha;
                         <div class="form-group">
                             <label for="website_url" class="form-label">Current Website</label>
                             <input 
-                                type="url" 
+                                type="text" 
                                 id="website_url" 
                                 name="website_url" 
                                 class="form-input"
-                                placeholder="https://yoursite.com"
+                                placeholder="yoursite.com"
                             >
                         </div>
                     </div>
