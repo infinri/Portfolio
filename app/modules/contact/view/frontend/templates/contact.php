@@ -82,6 +82,7 @@ use App\Base\Helpers\ReCaptcha;
                     </div>
                 </div>
             </div>
+            </div>
             
             <!-- Contact Form -->
             <div class="contact-form-wrapper">
