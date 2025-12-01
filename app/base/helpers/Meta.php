@@ -18,7 +18,7 @@ final class Meta
         // Defaults (DRY - set once, use everywhere)
         'title' => 'Infinri | Affordable Web Development for Small Businesses',
         'description' => 'Website development, hosting, and maintenance starting at $10. From quick templates to monthly support plans, transparent pricing, fast delivery, no surprises.',
-        'keywords' => 'web development, website design, small business websites, affordable hosting, monthly support, PHP development, custom websites, Minneapolis developer',
+        'keywords' => 'web development, website design, small business websites, affordable hosting, monthly support, PHP development, custom websites, US web developer, Minneapolis developer, remote web development',
         'author' => 'Lucio Saldivar',
         'viewport' => 'width=device-width, initial-scale=1.0',
         'charset' => 'UTF-8',
@@ -128,7 +128,7 @@ final class Meta
         self::$tags = [
             'title' => 'Infinri | Affordable Web Development for Small Businesses',
             'description' => 'Website development, hosting, and maintenance starting at $10. From quick templates to monthly support plans transparent pricing, fast delivery, no surprises.',
-            'keywords' => 'web development, website design, small business websites, affordable hosting, monthly support, PHP development, custom websites, Minneapolis developer',
+            'keywords' => 'web development, website design, small business websites, affordable hosting, monthly support, PHP development, custom websites, US web developer, Minneapolis developer, remote web development',
             'author' => 'Lucio Saldivar',
             'viewport' => 'width=device-width, initial-scale=1.0',
             'charset' => 'UTF-8',

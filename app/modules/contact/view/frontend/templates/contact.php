@@ -65,8 +65,8 @@ use App\Base\Helpers\ReCaptcha;
                     </svg>
                     <div class="info-content">
                         <h3 class="info-title">Location</h3>
-                        <p class="info-text">Remote Worldwide</p>
-                        <p class="info-subtitle">Serving small businesses everywhere</p>
+                        <p class="info-text">United States</p>
+                        <p class="info-subtitle">Serving small businesses across the US</p>
                     </div>
                 </div>
                 

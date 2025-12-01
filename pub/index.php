@@ -87,7 +87,8 @@ $GLOBALS['csrf'] = $csrfToken;
 if (Env::get('APP_ENV', 'development') !== 'production') {
     Assets::addCss('/assets/base/css/critical-hero.css', 'base');
     Assets::addCss('/assets/base/css/reset.css', 'base');
-    Assets::addCss('/assets/base/css/variables.css', 'base');
+    Assets::addCss('/assets/base/css/variables.css', 'base'); // System variables (font sizes, shadows, etc.)
+    Assets::addCss('/assets/base/css/theme.css', 'base'); // Customer theme (colors, fonts, radius)
     Assets::addCss('/assets/base/css/base.css', 'base');
     Assets::addCss('/assets/frontend/css/theme.css', 'frontend');
     Assets::addJs('/assets/base/js/base.js', 'base');

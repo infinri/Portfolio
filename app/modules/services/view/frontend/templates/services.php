@@ -124,10 +124,10 @@ declare(strict_types=1);
                     <li>Mobile-responsive</li>
                     <li>SEO-ready</li>
                     <li>1 revision</li>
-                    <li>24–48 hour delivery*</li>
+                    <li>Typically 1-3 days*</li>
                 </ul>
                 <div class="service-perfect-for">
-                    <strong>*Delivery:</strong> 24-48 hours after receiving all content (text, images, final decisions)
+                    <strong>*Delivery depends on complexity.</strong> Basic templates typically 1-3 days after receiving all content (text, images, final decisions).
                 </div>
                 <a href="/contact" class="service-cta">Start Project</a>
             </div>

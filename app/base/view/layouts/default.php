@@ -8,7 +8,7 @@ declare(strict_types=1);
  */
 
 use App\Base\Helpers\{Meta, Assets, ReCaptcha};
-use App\Helpers\Env;
+use App\Helpers\{Env, Theme};
 ?>
 <!DOCTYPE html>
 <html lang="en">

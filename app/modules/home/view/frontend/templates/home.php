@@ -54,7 +54,7 @@ declare(strict_types=1);
                 <p class="service-price">$10 - $50</p>
                 <p class="service-description">Fast, affordable websites using proven templates. Perfect for new businesses, side-hustles, or anyone who wants to get online fast without spending hundreds.</p>
                 <div class="service-highlights">
-                    <span class="highlight">24-48hr delivery</span>
+                    <span class="highlight">Fast delivery</span>
                     <span class="highlight">Mobile-ready</span>
                     <span class="highlight">SEO optimized</span>
                 </div>
@@ -159,8 +159,8 @@ declare(strict_types=1);
                 <svg class="why-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                 </svg>
-                <h3>Delivered in 24–48 Hours</h3>
-                <p>Template sites ready fast so you can start getting customers</p>
+                <h3>Fast Delivery Based on Complexity</h3>
+                <p>Basic templates typically 1-3 days, more complex sites take longer</p>
             </div>
             <div class="why-choose-item">
                 <svg class="why-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -204,7 +204,7 @@ declare(strict_types=1);
     <div class="container">
         <div class="cta-content">
             <h2>Ready to Get Started?</h2>
-            <p>Template websites ready in 24–48 hours. Fixes delivered within 24 hours. Monthly support starting at $10. Let's build something that actually works for your business.</p>
+            <p>Delivery time depends on complexity—basic templates typically 1-3 days. Fixes usually within 24 hours. Monthly support starting at $10. Let's build something that actually works for your business.</p>
             <a href="/contact" class="btn btn-white btn-large">Start Your Project</a>
         </div>
     </div>

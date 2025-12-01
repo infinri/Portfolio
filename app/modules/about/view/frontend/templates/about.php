@@ -70,10 +70,10 @@ declare(strict_types=1);
                 </svg>
                 <h3 class="differentiator-title">Fast Turnarounds, Real Deadlines</h3>
                 <p class="differentiator-text">
-                    I don't take on more work than I can deliver. Simple websites in 24-48 hours. 
-                    Quick fixes in 1-2 days. Monthly plan requests within 24 hours. If I say it'll be done Tuesday, 
-                    it's done Tuesday not "Tuesday-ish" or "we'll circle back." Your time matters, and I respect that.
-                    Fast website development without compromising quality.
+                    I don't take on more work than I can deliver. Delivery time depends on website complexity basic 
+                    templates typically 1-3 days, more complex sites take longer. Quick fixes usually 1-2 days. 
+                    Monthly plan requests within 24 hours. If I say it'll be done Tuesday, it's done Tuesday—not 
+                    "Tuesday-ish" or "we'll circle back." Your time matters, and I respect that.
                 </p>
             </div>
             

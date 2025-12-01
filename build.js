@@ -19,6 +19,7 @@ const config = {
         // Base CSS (non-critical - critical.css is inlined separately)
         'base/css/reset.css',
         'base/css/variables.css',
+        'base/css/theme.css',        // Customer theme overrides
         'base/css/base.css',
         // Frontend CSS
         'frontend/css/theme.css'
