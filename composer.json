@@ -4,8 +4,7 @@
   "type": "project",
   "license": "MIT",
   "require": {
-    "php": ">=8.1",
-    "getbrevo/brevo-php": "^2.0"
+    "php": ">=8.1"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.89",
@@ -46,15 +45,8 @@
     "sort-packages": true
   },
   "scripts": {
-    "post-install-cmd": [
-      "@fix-brevo"
-    ],
-    "post-update-cmd": [
-      "@fix-brevo"
-    ],
-    "fix-brevo": "php fix-brevo-php84.php",
     "s:up": "php bin/console setup:update",
-    "minify": "php bin/console setup:minify"
+    "minify": "php bin/console minify"
   },
   "minimum-stability": "stable",
   "prefer-stable": true

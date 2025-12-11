@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Handles contact form POST requests
  */
 
-use App\Base\Helpers\{Validator, Mail, Logger, RateLimiter, ReCaptcha, BrevoContacts};
+use App\Base\Helpers\{Validator, Logger, RateLimiter, ReCaptcha, GoogleSheets};
 use App\Helpers\Session;
 
 // Set JSON response header
@@ -106,18 +106,18 @@ try {
     // 5. Get Validated & Sanitized Data (merge with POST for optional fields)
     $data = array_merge($_POST, $validator->validated());
     
-    // 6. Create contact in Brevo (triggers automation workflows)
+    // 6. Append contact to Google Sheets
     try {
-        Logger::info('Creating Brevo contact', [
+        Logger::info('Appending contact to Google Sheets', [
             'customer_name' => $data['name'],
             'customer_email' => $data['email']
         ]);
         
-        // Add contact to Brevo database - check return value!
-        $success = BrevoContacts::addContact($data);
+        // Append contact to Google Sheets
+        $success = GoogleSheets::appendContact($data);
         
         if (!$success) {
-            Logger::error('Brevo contact creation returned false');
+            Logger::error('Google Sheets append returned false');
             echo json_encode(['success' => false, 'message' => 'Failed to send message. Please try again.']);
             exit;
         }
@@ -125,13 +125,13 @@ try {
         // Record this attempt for rate limiting
         RateLimiter::record($clientIp);
         
-        Logger::info('Brevo contact created successfully');
+        Logger::info('Google Sheets contact appended successfully');
         
         echo json_encode(['success' => true, 'message' => 'Message sent successfully!']);
         exit;
         
     } catch (Exception $e) {
-        Logger::error('Brevo contact creation failed', [
+        Logger::error('Google Sheets append failed', [
             'error' => $e->getMessage(),
             'file' => $e->getFile(),
             'line' => $e->getLine()
