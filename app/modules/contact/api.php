@@ -7,7 +7,7 @@ declare(strict_types=1);
  */
 
 use App\Base\Helpers\{Validator, Logger, RateLimiter, ReCaptcha, GoogleSheets};
-use App\Helpers\Session;
+use App\Helpers\{Session, Env};
 
 // Set JSON response header
 header('Content-Type: application/json');
@@ -42,14 +42,16 @@ try {
         exit;
     }
     
-    // 3. CSRF Token Verification
-    $submittedToken = $_POST['csrf_token'] ?? '';
-    
-    if (!Session::verifyCsrf($submittedToken)) {
-        Logger::warning('CSRF token verification failed', ['ip' => $clientIp]);
-        http_response_code(403);
-        echo json_encode(['success' => false, 'message' => 'Invalid security token. Please refresh the page and try again.']);
-        exit;
+    // 3. CSRF Token Verification (if enabled)
+    if (Env::get('CSRF_ENABLED', 'true') === 'true') {
+        $submittedToken = $_POST['csrf_token'] ?? '';
+        
+        if (!Session::verifyCsrf($submittedToken)) {
+            Logger::warning('CSRF token verification failed', ['ip' => $clientIp]);
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'Invalid security token. Please refresh the page and try again.']);
+            exit;
+        }
     }
     
     // 4. reCAPTCHA Verification (if enabled)

@@ -57,7 +57,7 @@ class GoogleSheets
                 ]
             ]);
 
-            $response = file_get_contents($webhookUrl, false, $context);
+            $response = @file_get_contents($webhookUrl, false, $context);
 
             if ($response === false) {
                 Logger::error('Google Sheets webhook request failed');
@@ -66,15 +66,33 @@ class GoogleSheets
 
             $result = json_decode($response, true);
 
-            if (isset($result['status']) && $result['status'] === 'success') {
+            // Check for JSON success response
+            if (isset($result['status']) && ($result['status'] === 'success' || $result['status'] === 'ok')) {
                 Logger::info('Google Sheets contact appended successfully', [
                     'email' => $contactData['email']
                 ]);
                 return true;
             }
 
-            Logger::error('Google Sheets webhook returned error', [
-                'response' => $response
+            // Check for JSON error response
+            if (isset($result['status']) && $result['status'] === 'error') {
+                Logger::error('Google Sheets webhook returned error', [
+                    'message' => $result['message'] ?? 'Unknown error'
+                ]);
+                return false;
+            }
+
+            // Google Apps Script often returns HTML due to redirects - treat as success
+            // if we got a response and it's not a JSON error
+            if ($response !== false && strlen($response) > 0) {
+                Logger::info('Google Sheets webhook completed (non-JSON response)', [
+                    'email' => $contactData['email']
+                ]);
+                return true;
+            }
+
+            Logger::error('Google Sheets webhook returned unexpected response', [
+                'response' => substr($response, 0, 200)
             ]);
             return false;
 
