@@ -11,7 +11,7 @@ declare(strict_types=1);
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <h1 class="hero-title">Affordable Websites for Real Businesses Starting at $10</h1>
+            <h1 class="hero-title">Affordable Websites for small Businesses Starting at $10</h1>
             <p class="hero-subtitle">Fast delivery, transparent pricing, no contracts, no tech jargon. Built for small businesses that need results without spending hundreds.</p>
             <div class="hero-buttons">
                 <a href="/services" class="btn btn-white">View All Services</a>
@@ -104,7 +104,7 @@ declare(strict_types=1);
 
 <section class="clients-section">
     <div class="container">
-        <h2 class="section-title">Built for Real Businesses</h2>
+        <h2 class="section-title">Built for small Businesses</h2>
         <p class="section-subtitle">I work with the people who make their communities better</p>
         
         <div class="client-types">

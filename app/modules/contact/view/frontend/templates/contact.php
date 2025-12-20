@@ -16,7 +16,7 @@ use App\Base\Helpers\ReCaptcha;
     <div class="container">
         <h1 class="page-title contact-title">Get In Touch</h1>
         <p class="page-subtitle contact-subtitle">
-            Fast, friendly website help for real small businesses. Whether you need a new site, a quick fix, or monthly support I'm here to help.
+            Fast, friendly website help for small businesses. Whether you need a new site, a quick fix, or monthly support I'm here to help.
         </p>
         <p class="page-subtitle contact-subtitle">
             <strong>Not sure what you need?</strong> No problem. Just describe your situation in simple words and I'll guide you.

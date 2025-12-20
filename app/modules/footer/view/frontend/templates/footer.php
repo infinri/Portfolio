@@ -13,7 +13,7 @@ declare(strict_types=1);
     <div class="container">
         <div class="footer-content">
             <div class="footer-section footer-brand">
-                <h2>Affordable Web Development for Real Businesses</h2>
+                <h2>Affordable Web Development for Small Businesses</h2>
                 <p>Helping small businesses, freelancers, and local shops get fast, clean, reliable websites at prices anyone can afford. No contracts, no hidden fees, no tech jargon just honest work and clear results.</p>
                 <div class="footer-skills">
                     <span class="skill-tag">Small Business Websites</span>
