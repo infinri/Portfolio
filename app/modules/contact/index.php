@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 Meta::setMultiple([
     'title' => 'Contact | Affordable Website Help & Support | Infinri',
     'description' => 'Get affordable website design, fixes, and monthly support. Websites from $10. Hosting from $15/mo. Contact Infinri for fast, friendly help with your small business website.',
-    'keywords' => 'contact web developer, small business website help, affordable web developer, $10 website, website fixes, website support, cheap web design help',
     'og:title' => 'Contact | Affordable Website Help for Small Businesses | Infinri',
     'og:description' => 'Get fast, friendly help with your small business website. Websites from $10, monthly support from $10/mo. I reply to every message personally.',
     'twitter:title' => 'Contact | Affordable Website Help for Small Businesses | Infinri'

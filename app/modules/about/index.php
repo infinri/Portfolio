@@ -13,7 +13,6 @@ use App\Helpers\Env;
 Meta::setMultiple([
     'title' => 'About | Affordable Web Developer for Small Businesses | Infinri',
     'description' => 'Affordable website development, hosting, and maintenance for small businesses. Websites from $10–$50, monthly support from $10/mo, fast delivery, transparent pricing.',
-    'keywords' => 'affordable web developer, cheap website design, small business website, low cost web design, $10 website, website maintenance, website hosting, web developer near me, business website help, affordable PHP developer',
     'og:title' => 'About | Affordable Web Developer for Small Businesses | Infinri',
     'og:description' => 'Affordable website development for small businesses. Websites from $10, monthly support from $10/mo. Transparent pricing, fast delivery.',
     'twitter:title' => 'About | Affordable Web Developer for Small Businesses | Infinri'

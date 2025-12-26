@@ -40,6 +40,7 @@ $metaConfig = [
 ];
 
 Meta::setMultiple($metaConfig[$errorType]);
+Meta::set('robots', 'noindex, follow');
 
 // Load error-specific assets (development only - production uses bundles)
 if (Env::get('APP_ENV', 'development') !== 'production') {

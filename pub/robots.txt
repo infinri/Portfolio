@@ -1,0 +1,15 @@
+# robots.txt for Infinri
+# Generated: 2025-12-26 20:16:14
+
+User-agent: *
+Allow: /
+
+# Disallow non-indexed pages
+Disallow: /terms
+Disallow: /privacy
+Disallow: /cookies
+Disallow: /disclaimer
+Disallow: /refund
+
+# Sitemap location
+Sitemap: https://www.infinri.com/sitemap.xml

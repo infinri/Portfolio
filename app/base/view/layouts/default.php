@@ -16,6 +16,9 @@ use App\Helpers\{Env, Theme};
     <?php
     // Render all meta tags (charset, viewport, title, description, OG, Twitter)
     echo Meta::render();
+    
+    // Render structured data (JSON-LD) for SEO
+    echo Meta::renderStructuredData();
 
     // Pre-load head and footer module assets before rendering CSS
     $headPath = dirname(__DIR__, 3) . '/modules/head/index.php';

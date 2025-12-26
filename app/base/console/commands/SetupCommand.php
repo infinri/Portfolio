@@ -99,7 +99,10 @@ final class SetupCommand
         // Step 6: Clear caches (if any)
         $this->clearCaches();
 
-        // Step 7: Verify setup
+        // Step 7: Generate sitemap and robots.txt
+        $this->generateSitemap();
+
+        // Step 8: Verify setup
         $this->verifySetup($isProduction && $hasProductionAssets);
 
         echo str_repeat('=', 50) . PHP_EOL;
@@ -342,5 +345,76 @@ final class SetupCommand
                 unlink($filePath);
             }
         }
+    }
+
+    private function generateSitemap(): void
+    {
+        echo "🗺️  Generating sitemap..." . PHP_EOL;
+
+        $siteUrl = rtrim($this->getEnv('SITE_URL', 'https://www.infinri.com'), '/');
+        $pubDir = __DIR__ . '/../../../../pub';
+        $sitemapPath = $pubDir . '/sitemap.xml';
+        $robotsPath = $pubDir . '/robots.txt';
+
+        // Indexable pages (exclude legal, error pages)
+        $pages = [
+            ['loc' => '/', 'priority' => '1.0', 'changefreq' => 'weekly'],
+            ['loc' => '/about', 'priority' => '0.8', 'changefreq' => 'monthly'],
+            ['loc' => '/services', 'priority' => '0.9', 'changefreq' => 'monthly'],
+            ['loc' => '/contact', 'priority' => '0.7', 'changefreq' => 'monthly'],
+        ];
+
+        // Generate sitemap XML
+        $lastmod = date('Y-m-d');
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
+
+        foreach ($pages as $page) {
+            $xml .= '  <url>' . PHP_EOL;
+            $xml .= '    <loc>' . $siteUrl . $page['loc'] . '</loc>' . PHP_EOL;
+            $xml .= '    <lastmod>' . $lastmod . '</lastmod>' . PHP_EOL;
+            $xml .= '    <changefreq>' . $page['changefreq'] . '</changefreq>' . PHP_EOL;
+            $xml .= '    <priority>' . $page['priority'] . '</priority>' . PHP_EOL;
+            $xml .= '  </url>' . PHP_EOL;
+        }
+
+        $xml .= '</urlset>' . PHP_EOL;
+
+        // Remove existing sitemap if present
+        if (file_exists($sitemapPath)) {
+            unlink($sitemapPath);
+            echo "  ✓ Removed existing sitemap.xml" . PHP_EOL;
+        }
+
+        // Write new sitemap
+        file_put_contents($sitemapPath, $xml);
+        echo "  ✓ Generated sitemap.xml (" . count($pages) . " URLs)" . PHP_EOL;
+
+        // Generate robots.txt
+        $robots = "# robots.txt for Infinri" . PHP_EOL;
+        $robots .= "# Generated: " . date('Y-m-d H:i:s') . PHP_EOL;
+        $robots .= PHP_EOL;
+        $robots .= "User-agent: *" . PHP_EOL;
+        $robots .= "Allow: /" . PHP_EOL;
+        $robots .= PHP_EOL;
+        $robots .= "# Disallow non-indexed pages" . PHP_EOL;
+        $robots .= "Disallow: /terms" . PHP_EOL;
+        $robots .= "Disallow: /privacy" . PHP_EOL;
+        $robots .= "Disallow: /cookies" . PHP_EOL;
+        $robots .= "Disallow: /disclaimer" . PHP_EOL;
+        $robots .= "Disallow: /refund" . PHP_EOL;
+        $robots .= PHP_EOL;
+        $robots .= "# Sitemap location" . PHP_EOL;
+        $robots .= "Sitemap: " . $siteUrl . "/sitemap.xml" . PHP_EOL;
+
+        // Remove existing robots.txt if present
+        if (file_exists($robotsPath)) {
+            unlink($robotsPath);
+            echo "  ✓ Removed existing robots.txt" . PHP_EOL;
+        }
+
+        // Write new robots.txt
+        file_put_contents($robotsPath, $robots);
+        echo "  ✓ Generated robots.txt" . PHP_EOL;
     }
 }

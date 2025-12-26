@@ -7,7 +7,7 @@ declare(strict_types=1);
  * /terms, /privacy, /cookies, /disclaimer, /refund
  */
 
-use App\Base\Helpers\Assets;
+use App\Base\Helpers\{Assets, Meta};
 use App\Helpers\Env;
 
 // Determine which legal document to show from URL
@@ -41,6 +41,9 @@ $lastUpdatedDates = [
     'refund' => 'November 21, 2025'
 ];
 $lastUpdated = $lastUpdatedDates[$page] ?? date('F j, Y');
+
+// Legal pages should not be indexed (boilerplate content)
+Meta::set('robots', 'noindex, follow');
 
 // Load legal-specific assets (development only - production uses bundles)
 if (Env::get('APP_ENV', 'development') !== 'production') {

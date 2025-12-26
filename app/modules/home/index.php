@@ -13,7 +13,6 @@ use App\Helpers\Env;
 Meta::setMultiple([
     'title' => 'Infinri | Affordable Websites for Small Businesses Starting at $10',
     'description' => 'Affordable website development starting at $10. Template sites in 24-48 hours, monthly support from $10/mo. No contracts, no tech jargon, transparent pricing.',
-    'keywords' => 'affordable web developer, cheap website design, $10 website, small business web design, low cost websites, website help, quick website, fast website setup, website maintenance for small business',
     'og:title' => 'Infinri | Affordable Websites for Small Businesses Starting at $10',
     'og:description' => 'Websites starting at $10. Template sites in 24-48 hours. Monthly support from $10/mo. No contracts, transparent pricing.',
     'twitter:title' => 'Infinri | Affordable Websites for Small Businesses Starting at $10'

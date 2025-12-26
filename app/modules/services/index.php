@@ -13,7 +13,6 @@ use App\Helpers\Env;
 Meta::setMultiple([
     'title' => 'Services | Affordable Web Development, Fixes, and Monthly Support | Infinri',
     'description' => 'Affordable website design, fixes, improvements, and monthly support for small businesses. Websites from $10, hosting from $15/mo, fast delivery, transparent pricing.',
-    'keywords' => 'affordable web design, small business website services, $10 website, website fixes, website improvements, web developer monthly support, cheap web developer, small business hosting, website maintenance',
     'og:title' => 'Services | Affordable Web Development for Small Businesses | Infinri',
     'og:description' => 'Websites from $10, monthly support from $10/mo, fixes from $20. Transparent pricing, fast delivery, no contracts.',
     'twitter:title' => 'Services | Affordable Web Development for Small Businesses | Infinri'
